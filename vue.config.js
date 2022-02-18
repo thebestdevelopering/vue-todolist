@@ -7,19 +7,9 @@ module.exports = defineConfig(
     css: {
       loaderOptions: {
         sass: {
-          prepenData: ' @import "@/assets/styles.sass"; ',
+          prepenData: ' @import "@/assets/styles.scss"; ',
         },
       },
     },
   }
 );
-
-// module.exports = {
-//   css: {
-//     loaderOptions: {
-//       sass: {
-//         prepenData: ' @import "@/assets/styles.sass"; '
-//       }
-//     }
-//   }
-// }
