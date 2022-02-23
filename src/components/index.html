@@ -1,19 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-</head>
-
-<body>
-    <div>
-        <p class="main__checkbox" :class="{ checked: isActive }">
-            <img class="main--task__check" src="../assets/images/Vector.svg" alt="">
-        </p>
+<div class="main--tasks" v-for="task in taskActive" :key="task">
+    <radio-box></radio-box>
+    <p class="main--tasks__text">
+      {{ task.note }}
+    </p>
+    <div class="main--tasks__actions">
+      <div class="main--tasks__actions_block">
+        <img
+          class="main--task_edit"
+          src="../assets/images/Edit.svg"
+          alt=""
+        />
+      </div>
+      <div class="main--tasks__actions_block">
+        <img
+          class="main--task_delete"
+          src="../assets/images/Cart.svg"
+          alt=""
+        />
+      </div>
     </div>
-</body>
+  </div>
 
-</html>
+
+  
+  <div class="main--tasks" v-for="task in taskChecked" :key="task">
+    <radio-box checked> </radio-box>
+    <p class="main--tasks__text">
+      {{ task.note }}
+    </p>
+    <div class="main--tasks__actions">
+      <div class="main--tasks__actions_block">
+        <img
+          class="main--task_edit"
+          src="../assets/images/Edit.svg"
+          alt=""
+        />
+      </div>
+      <div class="main--tasks__actions_block">
+        <img
+          class="main--task_delete"
+          src="../assets/images/Cart.svg"
+          alt=""
+        />
+      </div>
+    </div>
