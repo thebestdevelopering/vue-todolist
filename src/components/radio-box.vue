@@ -2,9 +2,9 @@
   <p
     class="main__checkbox"
     :class="{
-      disabled: disabled,
-      checked: checked,
-      active: !disabled && !checked,
+      main__checkbox_disabled: disabled,
+      main__checkbox_checked: checked,
+      main__checkbox_active: !disabled && !checked,
     }"
   >
     <img
