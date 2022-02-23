@@ -6,7 +6,7 @@
       </div>
       <div class="main">
         <div class="main--tasks">
-          <radio-box disabled></radio-box>
+          <Radiobox disabled />
           <input
             class="main--tasks_text"
             type="text"
@@ -17,8 +17,7 @@
           </div>
         </div>
         <div class="main--tasks" v-for="task in tasks" :key="task">
-          <radio-box v-if="task.checked" checked></radio-box>
-          <radio-box v-else></radio-box>
+          <radio-box :checked="task.checked"></radio-box>
           <p class="main--tasks__text">
             {{ task.note }}
           </p>
