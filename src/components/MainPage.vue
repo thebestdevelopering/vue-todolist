@@ -6,7 +6,7 @@
       </div>
       <div class="main">
         <div class="main--tasks">
-          <Radiobox disabled />
+          <radio-box disabled> </radio-box>
           <input
             class="main--tasks_text"
             type="text"
