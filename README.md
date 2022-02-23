@@ -1,4 +1,4 @@
-# todolist
+# Todolist
 
 The perfect to-do list. The best one you've seen.
 Created on the Vue framework
