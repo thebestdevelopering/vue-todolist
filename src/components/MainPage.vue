@@ -16,7 +16,6 @@
             <img src="../assets/images/Plus.svg" alt="" />
           </div>
         </div>
-
         <div class="main--tasks" v-for="task in tasks" :key="task">
           <radio-box v-if="task.checked" checked></radio-box>
           <radio-box v-else></radio-box>
@@ -83,14 +82,6 @@ export default {
   },
   components: {
     RadioBox,
-  },
-  computed: {
-    taskChecked: function () {
-      return this.tasks.filter((i) => i.checked === true);
-    },
-    taskActive: function () {
-      return this.tasks.filter((i) => i.checked !== true);
-    },
   },
 };
 </script>
