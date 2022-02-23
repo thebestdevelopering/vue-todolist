@@ -1,20 +1,32 @@
 <template>
-  <p class="main__checkbox" :class="{ checked: isActive }">
-    <img class="main--task__check" src="../assets/images/Vector.svg" alt="" />
+  <p
+    class="main__checkbox"
+    :class="{
+      disabled: disabled,
+      checked: checked,
+      active: !disabled && !checked,
+    }"
+  >
+    <img
+      v-if="checked"
+      class="main--task__check"
+      src="../assets/images/Vector.svg"
+      alt=""
+    />
   </p>
 </template>
 
 <script>
 export default {
   props: {
-    disabled: Boolean,
-    checked: Boolean,
-  },
-  data() {
-    return {
-      isActive: true,
-      hasError: false,
-    };
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    checked: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>

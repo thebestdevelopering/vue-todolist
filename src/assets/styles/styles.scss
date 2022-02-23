@@ -41,10 +41,10 @@ body {
   margin-left: 24px;
   box-sizing: border-box;
 }
-.main__checkbox_disabled {
+.disabled {
   border: 2px solid #b8b8b8;
 }
-.main__checkbox_active {
+.active {
   border: 2px solid #db4c3f;
   cursor: pointer;
 }

@@ -6,7 +6,7 @@
       </div>
       <div class="main">
         <div class="main--tasks">
-          <p class="main__checkbox main__checkbox_disabled"></p>
+          <radio-box disabled></radio-box>
           <input
             class="main--tasks_text"
             type="text"
@@ -17,9 +17,11 @@
           </div>
         </div>
 
-        <div class="main--tasks">
-          <p class="main__checkbox main__checkbox_active"></p>
-          <p class="main--tasks__text">Изучить ReactJS</p>
+        <div class="main--tasks" v-for="task in taskActive" :key="task">
+          <radio-box></radio-box>
+          <p class="main--tasks__text">
+            {{ task.note }}
+          </p>
           <div class="main--tasks__actions">
             <div class="main--tasks__actions_block">
               <img
@@ -37,16 +39,11 @@
             </div>
           </div>
         </div>
-        <div class="main--tasks">
-          <Radio checked />
-          <!-- <p class="main__checkbox checked">
-            <img
-              class="main--task__check"
-              src="../assets/images/Vector.svg"
-              alt=""
-            />
-          </p> -->
-          <p class="main--tasks__text">Создать TODO</p>
+        <div class="main--tasks" v-for="task in taskChecked" :key="task">
+          <radio-box checked> </radio-box>
+          <p class="main--tasks__text">
+            {{ task.note }}
+          </p>
           <div class="main--tasks__actions">
             <div class="main--tasks__actions_block">
               <img
@@ -92,11 +89,29 @@
 </template>
 
 <script>
-import Radio from './radio-box.vue';
+import RadioBox from './radio-box.vue';
 
 export default {
+  data() {
+    return {
+      tasks: [
+        { note: 'Изучить Vue', checked: true },
+        { note: 'Проснуться в 7 утра' },
+        { note: 'Сделать стрижку', checked: false },
+        { note: 'Сделать прививку', checked: true },
+      ],
+    };
+  },
   components: {
-    Radio,
+    RadioBox,
+  },
+  computed: {
+    taskChecked: function () {
+      return this.tasks.filter((i) => i.checked === true);
+    },
+    taskActive: function () {
+      return this.tasks.filter((i) => i.checked !== true);
+    },
   },
 };
 </script>
