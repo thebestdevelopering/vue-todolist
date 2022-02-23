@@ -5,6 +5,17 @@
         <p class="header__text_title">Список задач</p>
       </div>
       <div class="main">
+        <div class="main--tasks">
+          <RadioBox disabled />
+          <input
+            class="main--tasks_text"
+            type="text"
+            placeholder="Введите текст задачи..."
+          />
+          <div class="main--tasks_add">
+            <img src="../assets/images/Plus.svg" alt="" />
+          </div>
+        </div>
         <ListItem />
       </div>
       <div class="footer">
@@ -35,10 +46,12 @@
 
 <script>
 import ListItem from './list-item.vue';
+import RadioBox from './radio-box.vue';
 
 export default {
   components: {
     ListItem,
+    RadioBox,
   },
 };
 </script>

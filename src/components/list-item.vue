@@ -1,15 +1,4 @@
 <template>
-  <div class="main--tasks">
-    <RadioBox disabled />
-    <input
-      class="main--tasks_text"
-      type="text"
-      placeholder="Введите текст задачи..."
-    />
-    <div class="main--tasks_add">
-      <img src="../assets/images/Plus.svg" alt="" />
-    </div>
-  </div>
   <div class="main--tasks" v-for="task in tasks" :key="task">
     <radio-box :checked="task.checked" />
     <p class="main--tasks__text">
