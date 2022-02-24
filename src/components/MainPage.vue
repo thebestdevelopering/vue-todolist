@@ -16,7 +16,15 @@
             <img src="../assets/images/Plus.svg" alt="" />
           </div>
         </div>
-        <ListItem />
+        <div class="main--tasks" v-for="task in tasks" :key="task">
+          <radio-box :checked="task.checked" />
+          <list-item
+            v-for="task in tasks"
+            :key="task"
+            :note="task.note"
+            :checked="task.checked"
+          />
+        </div>
       </div>
       <div class="footer">
         <div class="footer--btn">
@@ -49,6 +57,16 @@ import ListItem from './list-item.vue';
 import RadioBox from './radio-box.vue';
 
 export default {
+  data() {
+    return {
+      tasks: [
+        { note: 'Изучить Vue', checked: true },
+        { note: 'Проснуться в 7 утра' },
+        { note: 'Сделать стрижку' },
+        { note: 'Сделать прививку', checked: true },
+      ],
+    };
+  },
   components: {
     ListItem,
     RadioBox,
