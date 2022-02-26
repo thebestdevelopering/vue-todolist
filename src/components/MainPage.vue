@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div class="todolist">
-      <HeaderBox />
+      <div class="header">
+        <p class="header__text_title">Список задач</p>
+      </div>
       <div class="main">
         <div class="main--tasks">
           <RadioBox disabled />
@@ -9,10 +11,13 @@
             class="main--tasks_text"
             type="text"
             placeholder="Введите текст задачи..."
+            :value="valueInput"
+            @input="handlyInput"
+            @keypress.enter="addTask"
           />
-          <div class="main--tasks_add">
+          <button class="main--tasks_add" @click="addTask">
             <img src="../assets/images/Plus.svg" alt="" />
-          </div>
+          </button>
         </div>
 
         <list-item
@@ -33,7 +38,7 @@
             />
             <p>Отметить все</p>
           </div>
-          <div class="footer--btn__actions delete">
+          <div class="footer--btn__actions delete" @click="removeTasks()">
             <img
               width="11"
               class="footer--btn__img"
@@ -51,7 +56,6 @@
 <script>
 import ListItem from './ListItem.vue';
 import RadioBox from './RadioBox.vue';
-import HeaderBox from './HeaderBox.vue';
 
 export default {
   data() {
@@ -62,12 +66,29 @@ export default {
         { note: 'Сделать стрижку' },
         { note: 'Сделать прививку', checked: true },
       ],
+      valueInput: '',
     };
   },
   components: {
     ListItem,
     RadioBox,
-    HeaderBox,
+  },
+  methods: {
+    handlyInput(event) {
+      this.valueInput = event.target.value;
+    },
+    addTask() {
+      if (this.valueInput === '') {
+        return;
+      }
+      this.tasks.push({
+        note: this.valueInput,
+      });
+      this.valueInput = '';
+    },
+    removeTasks() {
+      this.tasks.splice(0);
+    },
   },
 };
 </script>
