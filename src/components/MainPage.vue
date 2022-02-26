@@ -1,9 +1,7 @@
 <template>
   <div class="container">
     <div class="todolist">
-      <div class="header">
-        <p class="header__text_title">Список задач</p>
-      </div>
+      <HeaderBox />
       <div class="main">
         <div class="main--tasks">
           <RadioBox disabled />
@@ -16,15 +14,13 @@
             <img src="../assets/images/Plus.svg" alt="" />
           </div>
         </div>
-        <div class="main--tasks" v-for="task in tasks" :key="task">
-          <radio-box :checked="task.checked" />
-          <list-item
-            v-for="task in tasks"
-            :key="task"
-            :note="task.note"
-            :checked="task.checked"
-          />
-        </div>
+
+        <list-item
+          v-for="task in tasks"
+          :key="task.note"
+          :note="task.note"
+          :checked="Boolean(task.checked)"
+        />
       </div>
       <div class="footer">
         <div class="footer--btn">
@@ -53,8 +49,9 @@
 </template>
 
 <script>
-import ListItem from './list-item.vue';
-import RadioBox from './radio-box.vue';
+import ListItem from './ListItem.vue';
+import RadioBox from './RadioBox.vue';
+import HeaderBox from './HeaderBox.vue';
 
 export default {
   data() {
@@ -70,6 +67,7 @@ export default {
   components: {
     ListItem,
     RadioBox,
+    HeaderBox,
   },
 };
 </script>
