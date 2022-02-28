@@ -29,7 +29,7 @@
       </div>
       <div class="footer">
         <div class="footer--btn">
-          <div class="footer--btn__actions mark">
+          <div class="footer--btn__actions mark" @click="checkAll()">
             <img
               width="16"
               class="footer--btn__img"
@@ -38,7 +38,7 @@
             />
             <p>Отметить все</p>
           </div>
-          <div class="footer--btn__actions delete" @click="removeTasks()">
+          <div class="footer--btn__actions delete" @click="clearAll()">
             <img
               width="11"
               class="footer--btn__img"
@@ -62,8 +62,8 @@ export default {
     return {
       tasks: [
         { note: 'Изучить Vue', checked: true },
-        { note: 'Проснуться в 7 утра' },
-        { note: 'Сделать стрижку' },
+        { note: 'Проснуться в 7 утра', checked: false },
+        { note: 'Сделать стрижку', checked: false },
         { note: 'Сделать прививку', checked: true },
       ],
       valueInput: '',
@@ -86,8 +86,20 @@ export default {
       });
       this.valueInput = '';
     },
-    removeTasks() {
+    clearAll() {
       this.tasks.splice(0);
+    },
+
+    checkAll() {
+      let checkedAll =
+        this.tasks.filter((item) => {
+          return item.checked === false;
+        }).length === 0;
+
+      let content = this.tasks.map((item) => {
+        return (item.checked = !checkedAll);
+      });
+      console.log(content);
     },
   },
 };
