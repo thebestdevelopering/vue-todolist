@@ -11,8 +11,7 @@
             class="main--tasks_text"
             type="text"
             placeholder="Введите текст задачи..."
-            :value="valueInput"
-            @input="handlyInput"
+            v-model="valueInput"
             @keypress.enter="addTask"
           />
           <button class="main--tasks_add" @click="addTask">
@@ -66,6 +65,7 @@ export default {
         { note: 'Сделать стрижку', checked: false },
         { note: 'Сделать прививку', checked: true },
       ],
+      message: '',
       valueInput: '',
     };
   },
@@ -74,9 +74,6 @@ export default {
     RadioBox,
   },
   methods: {
-    handlyInput(event) {
-      this.valueInput = event.target.value;
-    },
     addTask() {
       if (this.valueInput === '') {
         return;
