@@ -20,24 +20,34 @@
         </div>
 
         <list-item
+          @clearOne="delete_task(index)"
           v-for="task in tasks"
           :key="task.note"
           :note="task.note"
           :checked="Boolean(task.checked)"
+          @checkbox-click="task.checked = !task.checked"
         />
       </div>
       <div class="footer">
         <div class="footer--btn">
-          <div class="footer--btn__actions mark" @click="checkAll()">
+          <div
+            class="footer--btn__actions mark unselectable"
+            @click="checkAll()"
+          >
             <img
               width="16"
               class="footer--btn__img"
               src="../assets/images/All.svg"
               alt=""
             />
-            <p>Отметить все</p>
+            <p>
+              {{ checkedAll ? 'Снять все' : 'Отметить все' }}
+            </p>
           </div>
-          <div class="footer--btn__actions delete" @click="clearAll()">
+          <div
+            class="footer--btn__actions delete unselectable"
+            @click="clearAll()"
+          >
             <img
               width="11"
               class="footer--btn__img"
@@ -65,7 +75,7 @@ export default {
         { note: 'Сделать стрижку', checked: false },
         { note: 'Сделать прививку', checked: true },
       ],
-      message: '',
+      message: [],
       valueInput: '',
     };
   },
@@ -73,7 +83,16 @@ export default {
     ListItem,
     RadioBox,
   },
+
+  computed: {
+    checkedAll() {
+      return this.tasks.filter((item) => item.checked === false).length === 0;
+    },
+  },
   methods: {
+    delete_task(id) {
+      this.tasks.splice(id, 1);
+    },
     addTask() {
       if (this.valueInput === '') {
         return;
@@ -86,17 +105,11 @@ export default {
     clearAll() {
       this.tasks.splice(0);
     },
-
     checkAll() {
-      let checkedAll =
-        this.tasks.filter((item) => {
-          return item.checked === false;
-        }).length === 0;
-
-      let content = this.tasks.map((item) => {
+      let checkedAll = this.checkedAll; // cache the value
+      this.tasks.map((item) => {
         return (item.checked = !checkedAll);
       });
-      console.log(content);
     },
   },
 };

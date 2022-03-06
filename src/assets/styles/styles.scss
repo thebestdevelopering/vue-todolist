@@ -53,6 +53,9 @@ body {
   background: #db4c3f;
   cursor: pointer;
 }
+.main--tasks__text_lined {
+  text-decoration: line-through;
+}
 .main--tasks_text {
   width: calc(100% - 130px);
   margin-left: 14px;
@@ -75,6 +78,7 @@ body {
   width: 65px;
   height: 64px;
   background: #fbfbfb;
+  border: none;
   cursor: pointer;
 }
 .main--task_edit {
@@ -120,6 +124,9 @@ body {
   color: #989898;
   font-size: 14px;
   line-height: 16px;
+}
+.unselectable {
+  user-select: none;
 }
 .mark {
   width: 145px;
