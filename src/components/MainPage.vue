@@ -20,7 +20,8 @@
         </div>
 
         <list-item
-          @clearOne="delete_task(index)"
+          @update="editTask(task.note, $event)"
+          @clearOne="deleteTask(index)"
           v-for="task in tasks"
           :key="task.note"
           :note="task.note"
@@ -90,7 +91,15 @@ export default {
     },
   },
   methods: {
-    delete_task(id) {
+    editTask(note, event) {
+      let index = this.tasks.findIndex((item) => {
+        return item.note === note;
+      });
+      console.log(event);
+
+      this.tasks[index].note = event.value;
+    },
+    deleteTask(id) {
       this.tasks.splice(id, 1);
     },
     addTask() {

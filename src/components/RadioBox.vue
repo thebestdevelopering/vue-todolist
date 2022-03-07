@@ -1,6 +1,6 @@
 <template>
   <p
-    class="main__checkbox"
+    class="main__checkbox unselectable"
     :class="{
       main__checkbox_disabled: disabled,
       main__checkbox_checked: checked,
